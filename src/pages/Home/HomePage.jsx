@@ -10,7 +10,6 @@ export const HomePage = () => {
   const dispatch = useDispatch();
   const jobs = useSelector(selectJobsData);
 
-  console.log(jobs);
   useEffect(() => {
     dispatch(fetchJobs());
   }, []);
@@ -19,7 +18,7 @@ export const HomePage = () => {
     <>
       <Header />
       <Search />
-      {jobs ? <JobsList data={jobs} /> : <p>...Loading</p>}
+      {jobs ? <JobsList data={jobs} /> : <p>Loading...</p>}
     </>
   );
 };

@@ -1,9 +1,9 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-import jobSlice from './jobs/jobSlice';
+import jobsReducer from './jobs/jobSlice';
 
 const rootReducer = combineReducers({
-  jobSlice,
+  jobsReducer,
 });
 
 export default rootReducer;
