@@ -1,0 +1,1 @@
+export const selectJobsData = (state) => state.jobs;
