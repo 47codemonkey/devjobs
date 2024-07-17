@@ -84,9 +84,9 @@ export const JobInfo = () => {
       </div>
       <footer className="footer-wrapper">
         <div className="footer-job-wrapper">
-          <div className="footer-job-info">
+          <div>
             <div className="footer-job-position">{position}</div>
-            <div>{company}</div>
+            <div className="footer-company-position">{company}</div>
           </div>
           <button className="footer-btn">Apply Now</button>
         </div>

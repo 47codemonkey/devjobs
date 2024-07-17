@@ -34,8 +34,18 @@
   border-radius: 10px;
   font-size: 16px;
   padding: 30px 20px;
+  color: var(--text-color);
   background-color: var(--secondary-background-color);
 }
+
+.search-input::placeholder {
+  color: var(--text-color)
+}
+
+.location-input::placeholder {
+  color: var(--text-color)
+}
+
 
 .search-input:focus {
   border: none;
@@ -60,6 +70,7 @@
   font-size: 16px;
   padding: 30px 20px;
   background-color: var(--search-background-color);
+  color: var(--text-color);
 }
 
 .location-input:focus {

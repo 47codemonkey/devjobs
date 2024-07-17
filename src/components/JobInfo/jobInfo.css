@@ -1,7 +1,6 @@
 .job-wrapper {
   max-width: 100%;
   width: 730px;
-  max-width: 100%;
   margin: 0 auto;
   position: relative;
   margin-top: -40px;
@@ -197,4 +196,9 @@
 .footer-job-position {
   font-weight: bold;
   margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+.footer-company-position {
+  color: var(--text-color);
 }
