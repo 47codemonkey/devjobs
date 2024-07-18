@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchJobs } from './jobAsyncActions';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { JobStateType } from 'src/types/job.ts';
 
-const initialState = {
+const initialState: JobStateType = {
   jobs: [],
   status: 'idle',
 };
@@ -20,11 +22,11 @@ const jobSlice = createSlice({
         state.status = 'loading';
         state.jobs = [];
       })
-      .addCase(fetchJobs.fulfilled, (state, action) => {
+      .addCase(fetchJobs.fulfilled, (state, action: PayloadAction<[]>) => {
         state.status = 'succeeded';
         state.jobs = action.payload;
       })
-      .addCase(fetchJobs.rejected, (state, action) => {
+      .addCase(fetchJobs.rejected, (state) => {
         state.status = 'failed';
         state.jobs = [];
       });

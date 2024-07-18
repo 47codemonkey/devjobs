@@ -1,4 +1,10 @@
-export const BgHeader = ({ className }) => {
+import React from 'react';
+
+type BgHeaderProps = {
+  className: string;
+};
+
+export const BgHeader: React.FC<BgHeaderProps> = ({ className }) => {
   return (
     <svg className={className} width="1440" height="160" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M1440 0H0v60c0 55.228 44.772 100 100 100h1340V0z" fill="#5964E0" />

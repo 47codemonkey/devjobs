@@ -1,4 +1,4 @@
-import Router from './pages/Router/index';
+import Router from './pages/Router';
 import './App.css';
 
 import { store } from './store';

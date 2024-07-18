@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectJobsData } from '../../store/jobs/jobSelectors';
@@ -5,12 +6,19 @@ import { fetchJobs } from '../../store/jobs/jobAsyncActions';
 import axios from 'axios';
 import { setJobs } from '../../store/jobs/jobSlice';
 import { URL } from '../../store/jobs/jobAsyncActions';
+import { AppDispatch } from 'src/store';
+
+type QueryParams = {
+  search?: string;
+  location?: string;
+  contract?: string;
+};
 
 export const useJobs = () => {
   const [query, setQuery] = useState('');
   const [locationQuery, setLocationQuery] = useState('');
 
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   const jobs = useSelector(selectJobsData);
 
   useEffect(() => {
@@ -21,7 +29,7 @@ export const useJobs = () => {
     try {
       let url = URL;
 
-      const params = {};
+      const params: QueryParams = {};
 
       if (query) {
         params.search = query;
@@ -31,16 +39,14 @@ export const useJobs = () => {
         params.location = locationQuery;
       }
 
-      const fullTimeOnly = document.getElementById('myCheckbox').checked;
-      if (fullTimeOnly) {
+      const checkbox = document.getElementById('myCheckbox') as HTMLInputElement | null;
+      if (checkbox && checkbox.checked) {
         params.contract = 'Full Time';
       }
 
       if (Object.keys(params).length > 0) {
         url += '?' + new URLSearchParams(params).toString();
       }
-
-      console.log('Fetching data with URL:', url); // Log the URL for debugging
 
       const response = await axios.get(url);
       dispatch(setJobs(response.data));
@@ -50,7 +56,7 @@ export const useJobs = () => {
     }
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const newQuery = event.target.value;
     setQuery(newQuery);
@@ -59,7 +65,7 @@ export const useJobs = () => {
     }
   };
 
-  const handleLocationSearch = (event) => {
+  const handleLocationSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const newQuery = event.target.value;
     setLocationQuery(newQuery);

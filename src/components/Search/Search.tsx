@@ -1,9 +1,24 @@
+import React from 'react';
 import { IconSearch } from '../../assets/desktop/icons/IconSearch';
 import { IconLocation } from '../../assets/desktop/icons/IconLocation';
 
 import './search.css';
 
-export const Search = ({ handleData, handleChange, handleLocationSearch, query, locationQuery }) => {
+type SearchProps = {
+  handleData: () => void;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleLocationSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  query: string;
+  locationQuery: string;
+};
+
+export const Search: React.FC<SearchProps> = ({
+  handleData,
+  handleChange,
+  handleLocationSearch,
+  query,
+  locationQuery,
+}) => {
   return (
     <div className="search-wrapper">
       <div className="search-form-wrapper">

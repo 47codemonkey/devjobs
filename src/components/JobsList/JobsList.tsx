@@ -1,14 +1,30 @@
+import React, { CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 import './jobsList.css';
 
-export const JobsList = ({ jobs }) => {
+type Job = {
+  id: number;
+  postedAt: string;
+  position: string;
+  logo: string;
+  location: string;
+  company: string;
+  contract: string;
+  logoBackground: string;
+};
+
+type JobsListProps = {
+  jobs: Job[];
+};
+
+export const JobsList: React.FC<JobsListProps> = ({ jobs }) => {
   return (
     <div className="jobs-wrapper">
       <ul className="jobs-list">
         {jobs.map(({ postedAt, position, logo, location, id, company, contract, logoBackground }) => (
           <li key={id} className="job">
             <Link to={`/job/${id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-              <div style={{ '--color': logoBackground }} className="image-logo">
+              <div style={{ '--color': logoBackground } as CSSProperties} className="image-logo">
                 <img src={logo} alt="logo" />
               </div>
               <div className="job-info">

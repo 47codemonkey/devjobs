@@ -5,7 +5,7 @@ import { IconSun } from '../../assets/desktop/icons/IconSun';
 
 import './toggleTheme.css';
 
-export const ToggleTheme = () => {
+export const ToggleTheme: React.FC = () => {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
 
   useEffect(() => {
