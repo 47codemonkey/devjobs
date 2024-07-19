@@ -1,4 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleThemeSelector } from 'src/store/toggleTheme/toggleThemeSelector.ts';
+import { switchTheme } from 'src/store/toggleTheme/toggleThemeSlice.ts';
 
 import { IconMoon } from '../../assets/desktop/icons/IconMoon';
 import { IconSun } from '../../assets/desktop/icons/IconSun';
@@ -6,7 +10,8 @@ import { IconSun } from '../../assets/desktop/icons/IconSun';
 import './toggleTheme.css';
 
 export const ToggleTheme: React.FC = () => {
-  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
+  const dispatch = useDispatch();
+  const theme = useSelector(toggleThemeSelector);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -15,7 +20,7 @@ export const ToggleTheme: React.FC = () => {
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
+    dispatch(switchTheme(newTheme));
   };
 
   return (
