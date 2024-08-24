@@ -7,12 +7,7 @@ import axios from 'axios';
 import { setJobs } from '../../store/jobs/jobSlice';
 import { URL } from '../../store/jobs/jobAsyncActions';
 import { AppDispatch } from 'src/store';
-
-type QueryParams = {
-  search?: string;
-  location?: string;
-  contract?: string;
-};
+import { QueryParams } from 'src/types/search.ts';
 
 export const useJobs = () => {
   const [query, setQuery] = useState('');

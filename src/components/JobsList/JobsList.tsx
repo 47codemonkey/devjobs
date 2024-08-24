@@ -1,21 +1,7 @@
 import React, { CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
+import { JobsListProps } from 'src/types/job.ts';
 import './jobsList.css';
-
-type Job = {
-  id: number;
-  postedAt: string;
-  position: string;
-  logo: string;
-  location: string;
-  company: string;
-  contract: string;
-  logoBackground: string;
-};
-
-type JobsListProps = {
-  jobs: Job[];
-};
 
 export const JobsList: React.FC<JobsListProps> = ({ jobs }) => {
   return (

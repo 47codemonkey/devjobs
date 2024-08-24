@@ -1,16 +1,8 @@
 import React from 'react';
 import { IconSearch } from '../../assets/desktop/icons/IconSearch';
 import { IconLocation } from '../../assets/desktop/icons/IconLocation';
-
+import { SearchProps } from 'src/types/search.ts';
 import './search.css';
-
-type SearchProps = {
-  handleData: () => void;
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleLocationSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  query: string;
-  locationQuery: string;
-};
 
 export const Search: React.FC<SearchProps> = ({
   handleData,

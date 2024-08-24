@@ -1,10 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchJobs } from './jobAsyncActions';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { JobStateType } from 'src/types/job.ts';
+import { JobsStateType } from 'src/types/job.ts';
 
-const initialState: JobStateType = {
+const initialState: JobsStateType = {
   jobs: [],
+  job: {
+    logo: '',
+    logoBackground: '',
+    company: '',
+    website: '',
+    position: '',
+    contract: '',
+    postedAt: '',
+    location: '',
+    description: '',
+    requirements: {
+      content: '',
+      items: [],
+    },
+    role: {
+      content: '',
+      items: [],
+    },
+  },
   status: 'idle',
 };
 
@@ -14,6 +33,9 @@ const jobSlice = createSlice({
   reducers: {
     setJobs(state, action) {
       state.jobs = action.payload;
+    },
+    setJob(state, action) {
+      state.job = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -33,5 +55,5 @@ const jobSlice = createSlice({
   },
 });
 
-export const { setJobs } = jobSlice.actions;
+export const { setJobs, setJob } = jobSlice.actions;
 export default jobSlice.reducer;
