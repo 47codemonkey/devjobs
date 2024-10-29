@@ -18,7 +18,7 @@ export const JobInfo: React.FC = () => {
   useEffect(() => {
     const fetchJobData = async () => {
       try {
-        const response = await axios.get(`${URL}/${id}`);
+        const response = await axios.get(`${URL}/id/${id}`);
         dispatch(setJob(response.data));
       } catch (error) {
         console.error('Error fetching job data:', error);

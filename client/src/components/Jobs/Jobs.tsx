@@ -5,17 +5,11 @@ import { JobsList } from '../JobsList/JobsList';
 import { useJobs } from './hook';
 
 export const Jobs: React.FC = () => {
-  const { query, locationQuery, handleLocationSearch, handleChange, handleData, jobs } = useJobs();
+  const { search, setSearch, handleSearch, jobs } = useJobs();
 
   return (
     <>
-      <Search
-        handleData={handleData}
-        handleChange={handleChange}
-        handleLocationSearch={handleLocationSearch}
-        query={query}
-        locationQuery={locationQuery}
-      />
+      <Search search={search} setSearch={setSearch} handleSearch={handleSearch} />
       <JobsList jobs={jobs} />
     </>
   );

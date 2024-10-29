@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchJobs } from './jobAsyncActions';
+import { searchJobs } from './jobAsyncActions';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { JobsStateType } from 'src/types/job.ts';
 
 const initialState: JobsStateType = {
   jobs: [],
+  search: [],
   job: {
     logo: '',
     logoBackground: '',
@@ -25,6 +27,7 @@ const initialState: JobsStateType = {
     },
   },
   status: 'idle',
+  loading: false,
 };
 
 const jobSlice = createSlice({
@@ -44,8 +47,13 @@ const jobSlice = createSlice({
         state.status = 'loading';
         state.jobs = [];
       })
-      .addCase(fetchJobs.fulfilled, (state, action: PayloadAction<[]>) => {
+      .addCase(fetchJobs.fulfilled, (state, action) => {
         state.status = 'succeeded';
+        state.jobs = action.payload;
+      })
+      .addCase(searchJobs.fulfilled, (state, action) => {
+        console.log('state action', action.payload);
+        state.loading = false;
         state.jobs = action.payload;
       })
       .addCase(fetchJobs.rejected, (state) => {

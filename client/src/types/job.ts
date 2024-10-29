@@ -1,5 +1,6 @@
 export type JobsStateType = {
   jobs: [];
+  search: [];
   job: {
     logo: string;
     logoBackground: string;
@@ -20,6 +21,7 @@ export type JobsStateType = {
     };
   };
   status: string;
+  loading: boolean;
 };
 
 export type Job = {
